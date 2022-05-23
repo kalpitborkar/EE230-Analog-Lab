@@ -1,0 +1,28 @@
+Differentiator Circuit
+
+* Include the ua741 opamp
+.include ua741.txt
+
+* Specifying the input voltage
+* vin 1 0 pulse(-2 2 0 0 0 0.2ms 0.4ms)
+vin 1 0 pwl(0 0 0.1ms 2 0.3ms -2 0.5ms 2 0.7ms -2 0.9ms 2 1.1ms -2 1.3ms 2 1.5ms -2 1.7ms 2 1.9ms -2 2.1ms 2 2.3ms -2)
+
+* Specifying the opamp
+x1 0 2 4 3 5 ua741
+
+* Specifying the supply voltages
+v1 3 0 -15
+v2 4 0 15
+
+* Specifying the resistors and capacitors
+c1 1 2 0.01u
+r1 2 5 10k
+
+.tran 0.001ms 3ms
+.control
+run 
+
+plot v(1) v(5)
+
+.endc 
+.end 

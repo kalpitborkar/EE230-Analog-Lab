@@ -1,0 +1,27 @@
+Non-Inverting Amplifier Circuit
+
+* Include the ua741 opamp
+.include ua741.txt
+
+* Specifying the input voltage
+vin 1 0 sin(0 2 1k)
+
+* Specifying the opamp
+x1 1 2 4 3 5 ua741
+
+* Specifying the supply voltages
+v1 3 0 -15
+v2 4 0 15
+
+* Specifying the resistances
+r1 0 2 1k
+r2 2 5 10k
+
+.tran 0.02ms 10ms
+.control
+run 
+
+plot v(1) v(5)
+
+.endc 
+.end 

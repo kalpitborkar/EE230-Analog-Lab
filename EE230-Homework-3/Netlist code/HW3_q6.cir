@@ -1,0 +1,28 @@
+Integrator Circuit
+
+* Include the ua741 opamp
+.include ua741.txt
+
+* Specifying the input voltage
+vin 1 0 pulse(-2 2 0 0 0 0.5ms 1ms)
+
+* Specifying the opamp
+x1 0 2 4 3 5 ua741
+
+* Specifying the supply voltages
+v1 3 0 -15
+v2 4 0 15
+
+* Specifying the resistors and capacitors
+c1 2 5 0.01u
+r1 1 2 10k
+r2 2 5 470k
+
+.tran 0.01ms 50ms
+.control
+run 
+
+plot v(1) v(5)
+
+.endc 
+.end 

@@ -1,0 +1,28 @@
+Inverting Amplifier Circuit
+
+* Include the ua741 opamp
+.include ua741.txt
+
+* Specifying the input voltage
+vin 1 0 dc 0 ac 0.1
+
+* Specifying the opamp
+x1 0 2 4 3 5 ua741
+
+* Specifying the supply voltages
+v1 3 0 -15
+v2 4 0 15
+
+* Specifying the resistances
+r1 1 2 1k
+r2 2 5 10k
+
+.ac dec 10 10 1Meg
+.control 
+run
+alter r2 100k
+run 
+plot 20*log10(10*abs(ac1.v(5))) 20*log10(10*abs(ac2.v(5))) xlog 
+
+.endc 
+.end 
