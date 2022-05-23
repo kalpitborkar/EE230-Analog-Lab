@@ -1,0 +1,32 @@
+HW5 Q1 Wheat stone bridge
+
+* .include lm324.txt
+.include ua741.txt
+
+vin 1 0 5
+v1 7 0 15
+v2 8 0 -15
+r1 1 3 300
+r2 1 2 300
+r3 3 0 300 
+rx 2 0 300
+r4 3 5 2.5k
+r5 5 6 100k
+r6 4 0 100k
+r7 2 4 2.5k
+
+x1 4 5 7 8 5 ua741
+
+.dc rx 300 310 5
+.control
+
+run
+
+plot v(3)-v(2)
+
+
+.endc 
+.end 
+
+
+

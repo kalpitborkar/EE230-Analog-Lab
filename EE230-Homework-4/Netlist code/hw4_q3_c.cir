@@ -1,0 +1,41 @@
+HW4 Q3 C
+
+.include ua741.txt
+.include zener_B.txt
+
+.subckt hw4_q3_a 1 3
+v1 5 0 15
+v2 6 0 -15
+r1 1 2 8.2k
+r2 2 3 15k
+r3 7 3 1k 
+
+x1 2 0 5 6 7 ua741
+x2 3 4 DI_1N4734A
+x3 0 4 DI_1N4734A
+.ends 
+
+.subckt hw4_q3_b 1 5
+v1 3 0 15
+v2 4 0 -15
+r1 1 2 18k 
+r2 2 5 1.5Meg 
+c1 2 5 47n 
+
+x1 0 2 3 4 5 ua741
+.ends 
+
+x1 2 1 hw4_q3_a
+x2 1 2 hw4_q3_b
+
+.tran 0.001ms 101ms 99ms
+.control 
+run 
+
+plot v(1) v(2)
+
+.endc 
+.end
+
+
+

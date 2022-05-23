@@ -1,0 +1,31 @@
+HW4 Q3 A
+
+.include ua741.txt
+.include zener_B.txt
+
+* vin 1 0 sin(0 1k 5)
+vin 1 0 0
+* vin 1 0 pwl (0 0 10ms 5v)
+v1 5 0 15
+v2 6 0 -15
+r1 1 2 8.2k
+r2 2 3 15k
+r3 7 3 1k 
+
+x1 2 0 5 6 7 ua741
+x2 3 4 DI_1N4734A
+x3 0 4 DI_1N4734A
+
+.control 
+dc vin -5 5 0.1 
+dc vin 5 -5 -0.1 
+* .dc vin 
+run
+plot dc1.v(3) dc2.v(3)
+
+.endc 
+.end 
+
+
+
+

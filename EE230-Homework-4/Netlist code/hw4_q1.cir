@@ -1,0 +1,28 @@
+HW4 Q1
+
+.include lm324.txt
+
+vin 1 0 5
+v4 4 0 5
+v5 5 0 5
+
+r1 4 3 75k
+r2 3 0 820
+rg 3 2 20k
+rf 2 6 180k 
+rl 6 0 10k
+c1 5 0 0.01u
+c2 3 0 0.01u
+
+x1 1 2 5 0 6 LM324
+
+.dc vin 0.1 5 0.1
+.control
+run
+
+plot v(1) v(6)
+
+.endc 
+.end 
+
+
