@@ -1,0 +1,40 @@
+Monostable multivibrator
+
+.include ua741.txt
+.include zener_B.txt
+
+
+.SUBCKT button_sw 1 2
+S1 1 2 c 0 b_sw1
+* Initial value, pulsed value, delay time, rise time, fall time, pulse width *
+V1 c 0 pulse(0 10 0.10 0.02 0.02 0.05 100)
+.model b_sw1 sw vt=1 vh=0.2 ron=1 roff=1000MEG
+.ENDS button_sw
+
+
+v1 3 0 15
+v2 4 0 -15
+v3 5 0 15
+v4 6 0 -15
+
+r1 2 3 10k 
+r2 7 8 1k 
+r3 8 1 10k 
+r4 1 0 10k 
+c1 4 2 10u 
+
+x1 1 2 5 6 7 ua741 
+x2 8 9 DI_1N4734A
+x3 0 9 DI_1N4734A
+
+x4 4 2 button_sw
+
+.tran 0.01ms 5s
+.control 
+run 
+
+plot v(2) v(8) v(7) v(1)
+*plot v(2) v(8)
+
+.endc 
+.end

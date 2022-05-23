@@ -1,0 +1,18 @@
+Half Wave precision rectifier
+
+.include ua741.txt
+.include Diode_1N914.txt
+
+.subckt half_wave_rectifier 1 2 3 4 5
+
+
+
+
+x1 0 2 4 3 5 ua741
+r1 1 2 10k
+r2 2 6 10k
+D1 2 5 1N914
+D2 5 6 1N914
+
+.ends
+

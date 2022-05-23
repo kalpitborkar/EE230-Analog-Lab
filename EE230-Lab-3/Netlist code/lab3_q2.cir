@@ -1,0 +1,36 @@
+Full Wave Precision rectifier
+
+.include ua741.txt
+.include Diode_1N914.txt
+
+
+vin 1 0 sin(0 5 1k)
+
+.subckt hwr_b 1 4 0
+r1 1 2 10k
+r2 2 4 10k
+d1 3 2 1N914 
+d2 4 3 1N914 
+x1 0 2 a b 3 ua741 
+va a 0 15
+vb b 0 -15
+.ends 
+
+
+x1 1 4 0 hwr_b 
+x2 0 5 a b 6 ua741
+r1 1 5 10k 
+r2 4 5 5k 
+r3 5 6 10k 
+r4 6 0 1k 
+va a 0 15 
+vb b 0 -15
+
+.tran 0.001ms 10ms
+.control
+run 
+
+print v(1) v(6)
+
+.endc 
+.end

@@ -1,0 +1,26 @@
+Astable Multivibrator with Diodes and resistor
+
+.include ua741.txt
+.include zener_B.txt
+
+v1 6 0 15
+v2 7 0 -15
+
+r0 2 4 50k 
+r1 1 0 30k 
+r2 4 1 35k 
+r3 3 4 1k 
+c1 2 0 0.01u 
+
+x1 1 2 6 7 3 ua741
+x2 4 5 DI_1N4734A
+x3 0 5 DI_1N4734A
+
+.tran 0.001ms 10ms
+.control 
+run 
+
+print v(2) v(4)
+
+.endc 
+.end

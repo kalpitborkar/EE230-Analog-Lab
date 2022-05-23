@@ -1,0 +1,25 @@
+Schmitt trigger
+
+.include ua741.txt
+.include zener_B.txt
+
+vin 1 0 0
+v1 6 0 15
+v2 7 0 -15
+v3 8 0 -3
+r1 3 4 1k 
+r2 4 2 10k 
+r3 2 8 10k 
+
+x1 2 1 6 7 3 ua741 
+x2 4 5 DI_1N4734A
+x3 0 5 DI_1N4734A
+
+.control 
+dc vin -6 6 0.1 
+dc vin 6 -6 -0.1
+
+plot dc1.v(4) dc2.v(4)
+
+.endc 
+.end

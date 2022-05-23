@@ -1,0 +1,33 @@
+BJT series regulator
+*Case 3
+
+* Include the zener model
+.include zener_B.txt
+
+.model bc547a NPN IS=10f BF=200 ISE=10.3f IKF=50m NE=1.3 
++ BR=9.5 VAF=80 IKR=12m ISC=47p NC=2 VAR=10 RB=280 RE=1 RC=40 
++ tr=0.3u tf=0.5n cje=12p vje=0.48 mje=0.5 cjc=6p vjc=0.7 mjc=0.33 kf=2f 
+ 
+.model SL100 NPN IS=100f BF=80 ISE=10.3f IKF=50m NE=1.3 
++ BR=9.5 VAF=80 IKR=12m ISC=47p NC=2 VAR=10 RB=100 RE=1 RC=10 
++ tr=0.3u tf=0.5n cje=12p vje=0.48 mje=0.5 cjc=6p vjc=0.7 mjc=0.33 kf=2f 
+
+* Specifying the components
+rc 1 3 1k
+Q1 1 3 2 SL100
+Q2 3 4 6 bc547a
+x1 0 6 DI_1N4734A 
+rl 2 0 1k
+
+r1 2 4 11.3k
+r2 4 0 13.7k
+
+vin 1 0 dc 20
+
+.dc vin 15 25 0.5
+.control
+run
+
+Plot v(2)
+.endc
+.end

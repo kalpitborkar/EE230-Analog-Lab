@@ -1,0 +1,24 @@
+Zener Regulator Analysis
+* Case 1
+* Include the zener_12 model
+.include ZENER_12.txt
+* Specifying the input voltage
+vin 1 0 20
+* Specifying dummy voltages
+vdummyis 1 3 0
+vdummyiz 4 0 0
+vdummyil 5 0 0 
+* Specifying Rs
+rs 3 2 470
+* Specifying RL
+rl 2 5 1k
+* Specify the zener model in the circuit
+x1 4 2 ZENER_12
+.dc vin 15 25 0.5
+.control
+run
+* Plot the output voltage and currents
+*Print v(2) 
+Print i(vdummyil) i(vdummyis) i(vdummyiz)
+.endc
+.end
