@@ -1,0 +1,43 @@
+lab8
+
+
+.include 1N4148.txt
+.include TL084.txt
+
+vin 1 0 1
+
+r0 1 2 612
+r11 5 6 1k
+r12 6 10 1k
+r21 11 0 1000
+r31 11 14 18k
+
+v3 3 0 12
+v4 4 0 -12
+
+v8 8 0 12
+v9 9 0 -12
+
+v12 12 0 12
+v13 13 0 -12
+
+
+* v7 7 0 -0.391
+v7 7 0 -0.3047
+
+x1 0 2 3 4 5 TL084
+x2 7 6 8 9 10 TL084
+x3 10 11 12 13 14 TL084
+
+D1 2 5 1N4148
+
+.dc vin 0.1 10 0.1
+.control
+run
+*plot v(14) vs ln(v(1))
+plot v(14) vs v(1)
+* print v(14) vs v(1)
+
+
+.endc 
+.end

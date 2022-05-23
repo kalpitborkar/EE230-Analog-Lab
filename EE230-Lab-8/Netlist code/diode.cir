@@ -1,0 +1,17 @@
+Diode
+
+.include 1N4148.txt
+
+vin 1 0 1
+vdummy 2 3 0
+D1 1 2 1N4148
+
+.dc vin 0 10 0.1
+.control
+run
+plot i(vdummy) 
+
+
+
+.endc 
+.end
