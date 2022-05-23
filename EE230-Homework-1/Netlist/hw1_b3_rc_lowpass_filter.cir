@@ -1,0 +1,18 @@
+HW1 B3 RC Lowpass filter
+
+* Specifying the components
+r1 1 2 10k
+c1 2 0 0.1u
+
+* Specifying the input voltage
+vin 1 0 dc 0 ac 1 
+
+.ac dec 10 1 1Meg
+.control
+run
+
+* Plotting amplitude frequency reponse (amplitude Bode plot) 
+plot vdb(2) xlog
+
+.endc
+.end

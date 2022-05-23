@@ -1,0 +1,19 @@
+HW1 B6 RLC Bandpass filter
+
+* Specifying the components
+l1 1 2 10m
+c1 2 3 0.1u
+r1 3 0 1k
+
+* Specifying the input voltage
+vin 1 0 dc 0 ac 1 
+
+.ac dec 10 1 10Meg
+.control
+run
+
+* Plot amplitude frequency response
+plot vdb(3) xlog
+
+.endc
+.end

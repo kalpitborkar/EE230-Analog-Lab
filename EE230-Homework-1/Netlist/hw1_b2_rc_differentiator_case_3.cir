@@ -1,0 +1,18 @@
+HW1 B2 RC Differentiator Case 3
+
+* Specifying the components
+c1 1 2 0.1u
+r1 2 0 10k
+
+* Specifying the input voltage
+* Case 3
+vin 1 0 pulse(0 5 0 0 0 1ms 2ms)
+
+.tran 0.01ms 70ms
+.control
+run
+
+plot v(1) v(2)
+
+.endc
+.end

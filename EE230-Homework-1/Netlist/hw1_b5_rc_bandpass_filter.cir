@@ -1,0 +1,20 @@
+HW1 B5 RC Bandpass filter
+
+* Specifying the components
+r1 1 2 10k
+c1 2 3 0.1u
+r2 3 0 10k
+c2 3 0 0.1u
+
+* Specifying the input voltage
+vin 1 0 dc 0 ac 1
+
+.ac dec 10 1 1Meg
+.control
+run
+
+* Plot Amplitude frequency response
+plot vdb(3) xlog
+
+.endc
+.end

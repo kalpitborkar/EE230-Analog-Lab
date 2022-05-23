@@ -1,0 +1,19 @@
+HW1 B1 RC Integrator Case 5
+
+* Specifying the components
+r1 1 2 10k
+c1 2 0 0.1u
+
+* Specifying the input voltage
+*Case 5
+vin 1 0 pulse(0 5 0 0 0 0.05ms 0.1ms) 
+
+.tran 0.01ms 6ms
+.control
+run
+
+plot v(1) v(2)
+
+.endc
+.end
+
